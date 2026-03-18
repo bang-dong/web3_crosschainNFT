@@ -19,11 +19,9 @@
 ## 🏗 系统架构
 
 ### 跨链流程图
-【源链 Source Chain】                                                          【目标链 Destination Chain】
+源链 Source Chain 【用户锁定资产（Token） → 合约触发事件（Lock Event） →  Chainlink CCIP 发送跨链消息 】 →  目标链 Destination Chain【接收消息并验证  →  Mint 对应 NFT（映射资产）】
 
-用户锁定资产（Token） → 合约触发事件（Lock Event） →  Chainlink CCIP 发送跨链消息  →  接收消息并验证  →  Mint 对应 NFT（映射资产）
-
-解锁对应资产（Token） ← 接收消息并验证            ←   Chainlink CCIP 发送跨链消息  ←  合约触发事件（Burn Event） ← 用户销毁NFT
+目标链 Destination Chain【用户销毁NFT  →  合约触发事件（Burn Event） →  Chainlink CCIP 发送跨链消息】 → 源链 Source Chain 【接收消息并验证 → 解锁对应资产（Token）】
 
 ---
 
@@ -35,8 +33,6 @@
 2. 合约生成唯一资产标识（assetId）
 3. 通过 CCIP 发送跨链消息
 4. 目标链接收消息并 mint NFT
-
----
 
 ### 🔥 Burn & Release（销毁 + 释放）
 
