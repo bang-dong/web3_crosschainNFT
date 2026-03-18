@@ -20,7 +20,9 @@
 
 ### 跨链流程图
 【源链 Source Chain】                                                          【目标链 Destination Chain】
+
 用户锁定资产（Token） → 合约触发事件（Lock Event） →  Chainlink CCIP 发送跨链消息  →  接收消息并验证  →  Mint 对应 NFT（映射资产）
+
 解锁对应资产（Token） ← 接收消息并验证            ←   Chainlink CCIP 发送跨链消息  ←  合约触发事件（Burn Event） ← 用户销毁NFT
 
 ---
@@ -65,25 +67,25 @@
 强制 Burn → Release 顺序
 状态记录防止重复执行
 
-🧪 测试
+### 🧪 测试
 测试框架：
-Hardhat
-Mocha
-Chai
+- Hardhat
+- Mocha
+- Chai
 
 测试覆盖率：
 ✅ 95%+
 
-核心测试用例
-NFT mint 正常流程
-Lock → Mint 跨链流程
-Burn → Release 回收流程
+核心测试用例:
+- NFT mint 正常流程
+- Lock → Mint 跨链流程
+- Burn → Release 回收流程
 ---
 
 ## 📌 项目总结
 
-实现跨链 NFT 映射协议
-设计 Lock & Mint / Burn & Release 模型
-解决跨链一致性与安全问题
-构建高覆盖率测试体系（接近生产级）
+- 实现跨链 NFT 映射协议
+- 设计 Lock & Mint / Burn & Release 模型
+- 解决跨链一致性与安全问题
+- 构建高覆盖率测试体系（接近生产级）
 
