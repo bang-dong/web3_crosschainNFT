@@ -24,6 +24,9 @@ contract NFTPoolBurnAndMint is CCIPReceiver, OwnerIsCreator {
     error NothingToWithdraw(); // Used when trying to withdraw Ether but there's nothing to withdraw.
     error FailedToWithdrawEth(address owner, address target, uint256 value); // Used when the withdrawal of Ether fails.
 
+    //event Debug(uint256 tokenId, address newOwner);
+    event Debug(uint256 tokenId, address newOwner);
+
     // Event emitted when a message is sent to another chain.
     event TokenBurnedAndSent(
         bytes32 indexed messageId, // The unique ID of the CCIP message.
@@ -166,7 +169,7 @@ contract NFTPoolBurnAndMint is CCIPReceiver, OwnerIsCreator {
         // Return the CCIP message ID
         return messageId;
     }
-
+    
     /// handle a received message
     function _ccipReceive(
         Client.Any2EVMMessage memory any2EvmMessage
@@ -180,7 +183,7 @@ contract NFTPoolBurnAndMint is CCIPReceiver, OwnerIsCreator {
 
         // mint a WrappedMyToken
         wnft.mintTokenWithSpecificTokenId(newOwner, tokenId);
-
+        emit Debug(tokenId, newOwner);
         emit TokenMinted(tokenId,newOwner);
         // emit MessageReceived(
         //     any2EvmMessage.messageId,
